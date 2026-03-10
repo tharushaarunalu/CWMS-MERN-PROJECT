@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style2.css">
+</head>
+<body>
+  
+  <div class="container">
+  <h1>Admin Dashboard</h1>
+  
+  <!-- Dashboard Cards -->
+  <div class="dashboard">
+    <div class="card red">
+      <h3>Total Bookings</h3>
+      <p><%= totalBookings %></p>
+        <a href="/admin/all-bookings" class="btn btn-primary">View All Bookings</a>
+    </div>
+    <div class="card blue">
+      <h3>New Bookings</h3>
+      <p><%= newBookings %></p>
+        <a href="/admin/all-bookings" class="btn btn-primary">View New Bookings</a>
+    </div>
+    <div class="card purple">
+      <h3>Completed Bookings</h3>
+      <p><%= completedBookings %></p>
+        <a href="/admin/all-bookings" class="btn btn-primary">View Completed Bookings</a>
+    </div>
+    <div class="card green">
+      <h3>Washing Points</h3>
+      <p><%= washingPoints %></p>
+        <a href="/admin/manage-washingpoints" class="btn btn-primary">Manage Washing Points</a>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+
+<div class="cls1">
+  <!-- Add Booking Button -->
+  <p></p>
+  <button id="openBookingModal" class="btn btn-primary">Add Car Washing Booking</button>
+</div>
+<div class="cls2">
+  <!-- Add Booking Button -->
+  <p></p>
+      <a href="/admin/logout" class="btn btn-danger">Logout</a>
+</div>
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <h2>Add Car Washing Booking</h2>
+    <form action="/admin/add-booking" method="POST">
+      <!-- Package Type -->
+      <label for="packageType">Package Type</label>
+      <select name="packageType" id="packageType" required>
+        <option value="Basic Cleaning">Basic Cleaning - $10.99</option>
+        <option value="Premium Cleaning">Premium Cleaning - $20.99</option>
+        <option value="Complex Cleaning">Complex Cleaning - $30.99</option>
+      </select>
+
+      <!-- Washing Point -->
+      <label for="washingPoint">Washing Point</label>
+      <select name="washingPoint" id="washingPoint" required>
+        <option value="Downtown Car Wash">Badulla Car Wash</option>
+        <option value="Suburban Wash Center">Colombo Wash Center</option>
+        <option value="Suburban Wash Center">Galle Wash Center</option>
+      </select>
+
+      <!-- Full Name -->
+      <label for="fullName">Full Name</label>
+      <input type="text" name="fullName" id="fullName" placeholder="Full Name" required>
+
+      <!-- Mobile Number -->
+      <label for="mobileNo">Mobile No</label>
+      <input type="text" name="mobileNo" id="mobileNo" placeholder="Mobile No." required>
+
+      <!-- Wash Date -->
+      <label for="washDate">Wash Date</label>
+      <input type="date" name="washDate" id="washDate" required>
+
+      <!-- Wash Time -->
+      <label for="washTime">Wash Time</label>
+      <input type="time" name="washTime" id="washTime" required>
+
+      <!-- Message -->
+      <label for="message">Message (if any)</label>
+      <textarea name="message" id="message" placeholder="Message if any"></textarea>
+
+      <!-- Buttons -->
+      <button type="submit" class="btn btn-success">Add</button>
+      <button type="button" class="btn btn-danger" id="closeBookingModal">Reset</button>
+    </form>
+  </div>
+</div>
+
+
+    
+    
+  </section>
+  
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone"></i> +1234567890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/plans">Washing Plans</a></li>
+          <li><a href="/points">Washing Points</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2023 Car Wash Management System</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- Modal Script -->
+<script>
+  const modal = document.getElementById("bookingModal");
+  const openBtn = document.getElementById("openBookingModal");
+  const closeBtn = document.getElementById("closeBookingModal");
+
+  // Open Modal
+  openBtn.onclick = () => {
+    modal.style.display = "flex";
+  };
+
+  // Close Modal
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  // Close Modal on Outside Click
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
+</script>
+
+</body>
+</html>

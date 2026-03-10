@@ -1,0 +1,45 @@
+<%- include('includes/header') %>
+
+<div class="container">
+  <h1>Enquiries</h1>
+  <table border="1" width="100%">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (enquiries && enquiries.length > 0) { %>
+        <% enquiries.forEach((enquiry, index) => { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= enquiry.name %></td>
+            <td><%= enquiry.email %></td>
+            <td><%= enquiry.message %></td>
+            <td><%= enquiry.status %></td>
+            <td>
+              <% if (enquiry.status === "Unread") { %>
+                <form action="/admin/enquiries/mark-read/<%= enquiry._id %>" method="POST">
+                  <button type="submit" class="btn btn-success">Mark as Read</button>
+                </form>
+              <% } else { %>
+                <span class="btn btn-secondary disabled">Read</span>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="6">No enquiries found.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('includes/footer') %>

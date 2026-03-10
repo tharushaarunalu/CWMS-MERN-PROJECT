@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    <link rel="stylesheet" href="/css/style7.css">
+</head>
+<body>
+  
+   <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/plans">Washing Plans</a></li>
+        <li><a href="/points">Washing Points</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </nav>
+<section class="appointment">
+  <div class="container">
+    <h1>Book Your Appointment</h1>
+
+    <form action="/book/confirm" method="POST">
+      <!-- Washing Plans Dropdown -->
+      <div class="form-group">
+        <label for="plan">Select a Plan:</label>
+        <select id="plan" name="plan" required>
+          <% washingPlans.forEach(plan => { %>
+            <option value="<%= plan.name %>">
+              <%= plan.name %> - $<%= plan.price %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <!-- Customer Name -->
+      <div class="form-group">
+        <label for="customerName">Your Name:</label>
+        <input type="text" id="customerName" name="customerName" placeholder="Enter your name" required>
+      </div>
+
+      <!-- Car Model -->
+      <div class="form-group">
+        <label for="carModel">Car Model:</label>
+        <input type="text" id="carModel" name="carModel" placeholder="Enter your car model" required>
+      </div>
+
+      <!-- Preferred Date -->
+      <div class="form-group">
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit" class="btn">Confirm Appointment</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<%- include('includes/footer') %>

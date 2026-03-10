@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style10.css">
+</head>
+<body>
+ <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/plans">Washing Plans</a></li>
+        <li><a href="/points">Washing Points</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </nav>
+<section class="points">
+  <div class="container">
+    <h1>Our Washing Points</h1>
+
+    <% if (washingPoints && washingPoints.length > 0) { %>
+      <div class="points-list">
+        <% washingPoints.forEach(point => { %>
+          <div class="point-card">
+            <h2><%= point.name %></h2>
+            <p><strong>Location:</strong> <%= point.location %></p>
+            <p><strong>Contact:</strong> <%= point.contact %></p>
+            <p><strong>Services:</strong></p>
+            <ul>
+              <% point.servicesAvailable.forEach(service => { %>
+                <li><%= service %></li>
+              <% }) %>
+            </ul>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No washing points available at the moment. Please check back later.</p>
+    <% } %>
+  </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone"></i> +1234567890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/plans">Washing Plans</a></li>
+          <li><a href="/points">Washing Points</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2023 Car Wash Management System</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>

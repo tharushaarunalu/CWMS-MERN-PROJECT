@@ -1,0 +1,171 @@
+booking-details.ejs
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>CWMS | New Bookings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/morris.css" type="text/css" />
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/basictable.css" />
+    <script src="/js/jquery.basictable.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/icon-font.min.css" type='text/css' />
+    <style>
+        .errorWrap {
+            padding: 10px;
+            margin: 0 0 20px 0;
+            background: #fff;
+            border-left: 4px solid #dd3d36;
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+        }
+        .succWrap {
+            padding: 10px;
+            margin: 0 0 20px 0;
+            background: #fff;
+            border-left: 4px solid #5cb85c;
+            box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="left-content">
+            <div class="mother-grid-inner">
+                <!-- Header -->
+                <%- include('includes/header') %>
+                <div class="clearfix"></div>
+                
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Home</a><i class="fa fa-angle-right"></i>Manage New Bookings</li>
+                </ol>
+
+                <div class="agile-grids">
+                    <!-- Table -->
+                    <div class="agile-tables">
+                        <div class="w3l-table-info">
+                            <h2>Bookings Details #<%= bookingId %></h2>
+                            <table id="table">
+                                <tbody>
+                                    <% if (booking) { %>
+                                        <tr>
+                                            <th>Booking Id#</th>
+                                            <td><%= booking.bookingId %></td>
+                                            <th>Posting Date</th>
+                                            <td><%= booking.postingDate %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Name</th>
+                                            <td><%= booking.fullName %></td>
+                                            <th>Mobile No</th>
+                                            <td><%= booking.mobileNumber %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Package Type</th>
+                                            <td>
+                                                <% if (booking.packageType == 1) { %>
+                                                    BASIC CLEANING ($10.99)
+                                                <% } else if (booking.packageType == 2) { %>
+                                                    PREMIUM CLEANING ($20.99)
+                                                <% } else if (booking.packageType == 3) { %>
+                                                    COMPLEX CLEANING ($30.99)
+                                                <% } %>
+                                            </td>
+                                            <th>Washing Point</th>
+                                            <td><%= booking.washingPointName %><br/><%= booking.washingPointAddress %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Washing Date</th>
+                                            <td><%= booking.washDate %></td>
+                                            <th>Washing Time</th>
+                                            <td><%= booking.washTime %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Message (if Any)</th>
+                                            <td colspan="3"><%= booking.message %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Status</th>
+                                            <td colspan="3"><%= booking.status %></td>
+                                        </tr>
+                                    <% if (!booking.adminRemark) { %>
+                                        <tr>
+                                            <td colspan="3">
+                                                <button data-toggle="modal" data-target="#myModal" class="btn-primary btn">Take Action</button>
+                                            </td>
+                                        </tr>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="4" style="color:blue; font-size:22px; text-align:center; font-weight:bold;">Admin Details</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Transaction Type</th>
+                                            <td><%= booking.paymentMode %></td>
+                                            <th>Transaction No. (if any)</th>
+                                            <td><%= booking.txnNumber %></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Admin Remark</th>
+                                            <td colspan="3"><%= booking.adminRemark %></td>
+                                        </tr>
+                                    <% } %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="4">No Booking Found</td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Update Booking #<%= bookingId %></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post">
+                                    <p>
+                                        <select name="txntype" required class="form-control">
+                                            <option value="">Transaction Type</option>
+                                            <option value="e-Wallet">e-Wallet</option>
+                                            <option value="UPI">UPI</option>
+                                            <option value="Debit/Credit Card">Debit/Credit Card</option>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </p>
+                                    <p><input type="text" name="transactionno" class="form-control" placeholder="Transaction Number (if any)"></p>
+                                    <p><textarea name="message" class="form-control" placeholder="Admin Remark" required></textarea></p>
+                                    <p><input type="submit" class="btn btn-custom" name="update" value="Update"></p>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <%- include('includes/footer') %>
+                <%- include('includes/sidebarmenu') %>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/jquery.nicescroll.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

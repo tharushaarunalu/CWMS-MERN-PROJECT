@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>CWMS | New Bookings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/morris.css" type="text/css" />
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/table-style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/basictable.css" />
+    <script src="/js/jquery.basictable.min.js"></script>
+</head>
+<body>
+    <div class="page-container">
+        <div class="left-content">
+            <div class="mother-grid-inner">
+                <!-- Header -->
+                <%- include('includes/header') %>
+                <div class="clearfix"></div>
+                
+                <!-- Breadcrumb -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/dashboard">Home</a><i class="fa fa-angle-right"></i>New Bookings</li>
+                </ol>
+
+                <!-- Main Content -->
+                <div class="agile-grids">
+                    <div class="agile-tables">
+                        <div class="w3l-table-info">
+                            <h2>New Bookings</h2>
+                            <table id="table">
+                                <thead>
+                                    <tr>
+                                        <th>Booking ID</th>
+                                        <th>Customer Name</th>
+                                        <th>Package Type</th>
+                                        <th>Washing Point</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (newBookings && newBookings.length > 0) { %>
+                                        <% newBookings.forEach(booking => { %>
+                                            <tr>
+                                                <td><%= booking.bookingId %></td>
+                                                <td><%= booking.customerName %></td>
+                                                <td>
+                                                    <% if (booking.packageType === 1) { %>
+                                                        Basic Cleaning ($10.99)
+                                                    <% } else if (booking.packageType === 2) { %>
+                                                        Premium Cleaning ($20.99)
+                                                    <% } else if (booking.packageType === 3) { %>
+                                                        Complex Cleaning ($30.99)
+                                                    <% } %>
+                                                </td>
+                                                <td><%= booking.washingPointName %></td>
+                                                <td><%= booking.date %></td>
+                                                <td><%= booking.time %></td>
+                                                <td>
+                                                    <a href="/booking-details?bid=<%= booking._id %>" class="btn btn-primary btn-sm">View</a>
+                                                    <a href="/delete-booking?bid=<%= booking._id %>" class="btn btn-danger btn-sm">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <tr>
+                                            <td colspan="7" style="text-align: center; color: red;">No new bookings found</td>
+                                        </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <%- include('includes/footer') %>
+            </div>
+        </div>
+        
+        <!-- Sidebar Menu -->
+        <%- include('includes/sidebarmenu') %>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <script src="/js/jquery.nicescroll.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

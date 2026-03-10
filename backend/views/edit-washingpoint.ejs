@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+      <link rel="stylesheet" href="/css/style15.css">
+
+</head>
+<body>
+
+     <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/plans">Washing Plans</a></li>
+        <li><a href="/points">Washing Points</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </nav>
+  
+
+<section class="edit-washingpoint">
+  <div class="container">
+    <h1>Edit Washing Point</h1>
+    <form action="/admin/edit-washingpoint/<%= washingPoint._id %>" method="POST">
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%= washingPoint.name %>" required>
+      </div>
+
+      <!-- Location -->
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="<%= washingPoint.location %>" required>
+      </div>
+
+      <!-- Contact -->
+      <div class="form-group">
+        <label for="contact">Contact</label>
+        <input type="text" id="contact" name="contact" value="<%= washingPoint.contact %>" required>
+      </div>
+
+      <!-- Services Available -->
+      <div class="form-group">
+        <label for="servicesAvailable">Services Available</label>
+        <input type="text" id="servicesAvailable" name="servicesAvailable" value="<%= washingPoint.servicesAvailable.join(", ") %>" required>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit" class="btn">Update Washing Point</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone"></i> +1234567890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/plans">Washing Plans</a></li>
+          <li><a href="/points">Washing Points</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2023 Car Wash Management System</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

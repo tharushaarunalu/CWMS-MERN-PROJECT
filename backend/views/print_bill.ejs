@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    .bill-container {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      max-width: 700px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    .btn-print {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 15px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .btn-print:hover {
+      background-color: #2980b9;
+    }
+    @media print {
+      .btn-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bill-container">
+    <h1>Car Wash Management System</h1>
+    <h2>Customer Bill</h2>
+
+    <table>
+      <tr>
+        <th>Customer Name</th>
+        <td><%= booking.fullName %></td>
+      </tr>
+      <tr>
+        <th>Mobile No.</th>
+        <td><%= booking.mobileNo %></td>
+      </tr>
+      <tr>
+        <th>Package Type</th>
+        <td><%= booking.packageType %></td>
+      </tr>
+      <tr>
+        <th>Washing Point</th>
+        <td><%= booking.washingPoint %></td>
+      </tr>
+      <tr>
+        <th>Wash Date</th>
+        <td><%= booking.washDate.toISOString().split('T')[0] %></td>
+      </tr>
+      <tr>
+        <th>Wash Time</th>
+        <td><%= booking.washTime %></td>
+      </tr>
+      <tr>
+        <th>Amount</th>
+        <td>$<%= booking.amount %></td>
+      </tr>
+    </table>
+
+    <button onclick="window.print()" class="btn-print">Print Bill</button>
+  </div>
+</body>
+</html>

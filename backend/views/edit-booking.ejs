@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style16.css">
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </nav>
+  <h1>Edit Booking</h1>
+  <form action="/admin/edit-booking/<%= booking._id %>" method="POST">
+    <label for="packageType">Package Type:</label>
+    <select name="packageType" id="packageType" required>
+      <option value="Basic Cleaning" <%= booking.packageType === 'Basic Cleaning' ? 'selected' : '' %>>Basic Cleaning</option>
+      <option value="Premium Cleaning" <%= booking.packageType === 'Premium Cleaning' ? 'selected' : '' %>>Premium Cleaning</option>
+      <option value="Complex Cleaning" <%= booking.packageType === 'Complex Cleaning' ? 'selected' : '' %>>Complex Cleaning</option>
+    </select>
+
+    <label for="washingPoint">Washing Point:</label>
+    <input type="text" name="washingPoint" id="washingPoint" value="<%= booking.washingPoint %>" required>
+
+    <label for="fullName">Full Name:</label>
+    <input type="text" name="fullName" id="fullName" value="<%= booking.fullName %>" required>
+
+    <label for="mobileNo">Mobile No:</label>
+    <input type="text" name="mobileNo" id="mobileNo" value="<%= booking.mobileNo %>" required>
+
+    <label for="washDate">Wash Date:</label>
+    <input type="date" name="washDate" id="washDate" value="<%= booking.washDate.toISOString().split('T')[0] %>" required>
+
+    <label for="washTime">Wash Time:</label>
+    <input type="time" name="washTime" id="washTime" value="<%= booking.washTime %>" required>
+
+    <label for="message">Message:</label>
+    <textarea name="message" id="message"><%= booking.message %></textarea>
+
+    <button type="submit">Update Booking</button>
+  </form>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone"></i> +1234567890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/plans">Washing Plans</a></li>
+          <li><a href="/points">Washing Points</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2023 Car Wash Management System</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

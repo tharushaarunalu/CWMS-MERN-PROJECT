@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Wash Booking</title>
+      <link rel="stylesheet" href="/css/style18.css">
+
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      color: #007bff;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    select,
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    select:focus,
+    input:focus,
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    /* Button Container (Horizontal Alignment) */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .btn {
+      width: 48%; /* Makes both buttons share equal width */
+      padding: 10px;
+      text-align: center;
+      font-size: 16px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Booking Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <h2>Add Car Washing Booking</h2>
+      <form action="/admin/add-booking" method="POST">
+        <!-- Package Type -->
+        <label for="packageType">Package Type</label>
+        <select name="packageType" id="packageType" required>
+          <option value="Basic Cleaning">Basic Cleaning - $10.99</option>
+          <option value="Premium Cleaning">Premium Cleaning - $20.99</option>
+          <option value="Complex Cleaning">Complex Cleaning - $30.99</option>
+        </select>
+
+        <!-- Washing Point -->
+        <label for="washingPoint">Washing Point</label>
+        <select name="washingPoint" id="washingPoint" required>
+          <option value="Downtown Car Wash">Badulla Car Wash</option>
+        <option value="Suburban Wash Center">Colombo Wash Center</option>
+        <option value="Suburban Wash Center">Galle Wash Center</option>
+        </select>
+
+        <!-- Full Name -->
+        <label for="fullName">Full Name</label>
+        <input type="text" name="fullName" id="fullName" placeholder="Full Name" required>
+
+        <!-- Mobile Number -->
+        <label for="mobileNo">Mobile No</label>
+        <input type="text" name="mobileNo" id="mobileNo" placeholder="Mobile No." required>
+
+        <!-- Wash Date -->
+        <label for="washDate">Wash Date</label>
+        <input type="date" name="washDate" id="washDate" required>
+
+        <!-- Wash Time -->
+        <label for="washTime">Wash Time</label>
+        <input type="time" name="washTime" id="washTime" required>
+
+        <!-- Message -->
+        <label for="message">Message (if any)</label>
+        <textarea name="message" id="message" placeholder="Message if any"></textarea>
+
+        <!-- Buttons (Horizontal) -->
+        <div class="button-container">
+          <button type="submit" class="btn btn-success">Add</button>
+          <button type="button" class="btn btn-danger" id="closeBookingModal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById("bookingModal");
+    const closeBtn = document.getElementById("closeBookingModal");
+
+    // Open Modal
+    window.onload = () => {
+      modal.style.display = "flex"; // Show modal on page load
+    };
+
+    // Close Modal
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    // Close Modal on Outside Click
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results</title>
+  <link rel="stylesheet" href="/css/style17.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/admin">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Search Results</h1>
+    <table border="1" width="100%" style="text-align: center; margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Package Type</th>
+          <th>Washing Point</th>
+          <th>Full Name</th>
+          <th>Mobile No</th>
+          <th>Wash Date</th>
+          <th>Wash Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (bookings && bookings.length > 0) { %>
+          <% bookings.forEach((booking, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= booking.packageType %></td>
+              <td><%= booking.washingPoint %></td>
+              <td><%= booking.fullName %></td>
+              <td><%= booking.mobileNo %></td>
+              <td><%= booking.washDate.toISOString().split('T')[0] %></td>
+              <td><%= booking.washTime %></td>
+              <td><%= booking.status %></td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="8">No bookings found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2023 Car Wash Management System</p>
+    </div>
+  </footer>
+</body>
+</html>

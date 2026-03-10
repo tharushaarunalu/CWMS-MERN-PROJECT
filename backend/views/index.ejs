@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Include Header -->
+  <%- include('includes/header') %>
+
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to CWMS</h1>
+      <p>Your one-stop solution for premium car washing services.</p>
+      <a href="/plans" class="btn">View Washing Plans</a>
+    </div>
+    <div class="hero-slider">
+      <img src="/img/car1.jpg" alt="Car Wash 1">
+      <img src="/img/car2.jpg" alt="Car Wash 2">
+      <img src="/img/car3.jpg" alt="Car Wash 3">
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service">
+        <img src="/img/car.png" alt="Exterior Washing">
+        <h3>Exterior Washing</h3>
+        <p>Thorough cleaning of your car's exterior to keep it shining.</p>
+      </div>
+      <div class="service">
+        <img src="/img/interior-cleaning.svg" alt="Interior Cleaning">
+        <h3>Interior Cleaning</h3>
+        <p>Detailed cleaning of your car's interior for a fresh experience.</p>
+      </div>
+      <div class="service">
+        <img src="/img/vacuum.svg" alt="Vacuum Cleaning">
+        <h3>Vacuum Cleaning</h3>
+        <p>Effective removal of dirt and debris from your car's interior.</p>
+      </div>
+      <div class="service">
+        <img src="/img/window-cleaning.svg" alt="Window Cleaning">
+        <h3>Window Cleaning</h3>
+        <p>Spotless cleaning of windows for maximum visibility.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat">
+        <h3>25+</h3>
+        <p>Service Points</p>
+      </div>
+      <div class="stat">
+        <h3>350+</h3>
+        <p>Skilled Technicians</p>
+      </div>
+      <div class="stat">
+        <h3>1500+</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="stat">
+        <h3>5000+</h3>
+        <p>Completed Washes</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Washing Plans Section -->
+<section class="plans">
+  <h2>Choose Your Plan</h2>
+  <div class="plan-cards">
+    <!-- Basic Cleaning Plan -->
+    <div class="plan-card">
+      <h3>Basic Cleaning</h3>
+      <p class="price">$10.99</p>
+      <ul>
+        <li>Seats Washing</li>
+        <li>Vacuum Cleaning</li>
+        <li>Exterior Cleaning</li>
+      </ul>
+      <a href="/book?plan=Basic%20Cleaning" class="btn">Book Now</a>
+    </div>
+
+    <!-- Premium Cleaning Plan -->
+    <div class="plan-card">
+      <h3>Premium Cleaning</h3>
+      <p class="price">$20.99</p>
+      <ul>
+        <li>Seats Washing</li>
+        <li>Vacuum Cleaning</li>
+        <li>Exterior Cleaning</li>
+        <li>Interior Wet Cleaning</li>
+      </ul>
+      <a href="/book?plan=Premium%20Cleaning" class="btn">Book Now</a>
+    </div>
+
+    <!-- Complex Cleaning Plan -->
+    <div class="plan-card">
+      <h3>Complex Cleaning</h3>
+      <p class="price">$30.99</p>
+      <ul>
+        <li>Seats Washing</li>
+        <li>Vacuum Cleaning</li>
+        <li>Exterior Cleaning</li>
+        <li>Interior Wet Cleaning</li>
+        <li>Window Cleaning</li>
+      </ul>
+      <a href="/book?plan=Complex%20Cleaning" class="btn">Book Now</a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or need assistance? Get in touch with us.</p>
+    <a href="/contact" class="btn">Contact Us</a>
+  </section>
+
+  <!-- Include Footer -->
+  <%- include('includes/footer') %>
+</body>
+</html>

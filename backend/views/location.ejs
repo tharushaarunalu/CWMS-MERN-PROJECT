@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('includes/header') %>
+  
+  <section class="locations">
+    <h1>Our Service Locations</h1>
+    <p>We have multiple service points to serve you better.</p>
+    <div class="locations-list">
+      <% locations.forEach(location => { %>
+        <div class="location-card">
+          <h2><%= location.name %></h2>
+          <p><%= location.address %></p>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+  
+  <%- include('includes/footer') %>
+</body>
+</html>

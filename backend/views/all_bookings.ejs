@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Bookings</title>
+  <link rel="stylesheet" href="/css/style7.css">
+</head>
+<body>
+  
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/plans">Washing Plans</a></li>
+      <li><a href="/points">Washing Points</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/admin">Admin</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>All Bookings</h1>
+
+    <!-- Search Form -->
+    <form action="/admin/search-bookings" method="GET" class="search-form">
+      <label for="search">Search by Mobile Number:</label>
+      <input type="text" id="search" name="mobileNo" placeholder="Enter mobile number" required>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <table border="1" width="100%" style="text-align: center; margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Package Type</th>
+          <th>Washing Point</th>
+          <th>Full Name</th>
+          <th>Mobile No</th>
+          <th>Wash Date</th>
+          <th>Wash Time</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (bookings && bookings.length > 0) { %>
+          <% bookings.forEach((booking, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= booking.packageType %></td>
+              <td><%= booking.washingPoint %></td>
+              <td><%= booking.fullName %></td>
+              <td><%= booking.mobileNo %></td>
+              <td><%= booking.washDate.toISOString().split('T')[0] %></td>
+              <td><%= booking.washTime %></td>
+              <td><%= booking.status %></td>
+              <td>
+                <!-- Print Bill Button -->
+                <a href="/admin/print_bill/<%= booking._id %>" class="btn btn-info" target="_blank">Print Bill</a>
+
+                <!-- Take Action Button -->
+                <form action="/admin/take-action/<%= booking._id %>" method="POST" style="display:inline;">
+                  <% if (booking.status !== 'Completed') { %>
+                    <button type="submit" class="btn btn-success">Mark as Completed</button>
+                  <% } else { %>
+                    <span class="btn btn-secondary disabled">Completed</span>
+                  <% } %>
+                </form>
+
+                <!-- Edit Button -->
+                <a href="/admin/edit-booking/<%= booking._id %>" class="btn btn-edit">Edit</a>
+
+                <!-- Delete Button -->
+                <form action="/admin/delete-booking/<%= booking._id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this booking?');">
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="9">No bookings found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Get In Touch</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+        <p><i class="fas fa-phone"></i> +1234567890</p>
+        <p><i class="fas fa-envelope"></i> info@example.com</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Popular Links</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/plans">Washing Plans</a></li>
+          <li><a href="/points">Washing Points</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-copyright">
+        <p>&copy; 2023 Car Wash Management System</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
