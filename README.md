@@ -74,7 +74,7 @@ A premium, modern, and high-performance Car Wash Management System built with th
 
 ## 📸 Screenshots
 
-*(Add your screenshots here to make it look even better on GitHub!)*
+*(![alt text](image.png))*
 
 ---
 
