@@ -1,0 +1,61 @@
+/* ============================================================
+   Booking Pages (Add + Edit)
+   ============================================================ */
+.booking-page {
+    background: var(--clr-bg);
+}
+
+.booking-form-wrap {
+    padding-bottom: var(--space-3xl);
+}
+
+.booking-form-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-2xl);
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.booking-form__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.booking-form__section-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--clr-text-muted);
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: var(--space-sm);
+}
+
+.booking-form__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-lg);
+}
+
+.booking-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--glass-border);
+}
+
+@media (max-width: 600px) {
+    .booking-form__actions {
+        flex-direction: column-reverse;
+    }
+
+    .booking-form__actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,84 @@
+/* ============================================================
+   Washing Points Page
+   ============================================================ */
+.points-page {
+    background: var(--clr-bg);
+}
+
+.points-body {
+    padding-bottom: var(--space-3xl);
+}
+
+.points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+}
+
+.point-card {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.point-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px hsla(0, 0%, 0%, 0.4);
+}
+
+.point-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
+.point-card__name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.point-card__address {
+    font-size: 0.85rem;
+    color: var(--clr-text-muted);
+}
+
+.point-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: hsla(42, 100%, 62%, 0.1);
+    border: 1px solid hsla(42, 100%, 62%, 0.3);
+    color: var(--clr-gold);
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+.point-card__stars {
+    color: var(--clr-gold);
+}
+
+.point-card__meta {
+    display: flex;
+    gap: var(--space-lg);
+    font-size: 0.85rem;
+    color: var(--clr-text-muted);
+}
+
+.point-card__services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.point-card__actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: auto;
+}

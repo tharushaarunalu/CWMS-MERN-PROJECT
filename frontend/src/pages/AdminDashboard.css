@@ -1,0 +1,123 @@
+/* ============================================================
+   Admin Dashboard Page
+   ============================================================ */
+.admin-page {
+    background: var(--clr-bg);
+}
+
+.admin-body {
+    padding-bottom: var(--space-3xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+/* Stat Cards */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+}
+
+.admin-stat-card {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: center;
+    text-align: center;
+    transition: transform var(--transition-base);
+    border-top: 2px solid var(--stat-color, var(--clr-primary));
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.admin-stat-card__icon {
+    font-size: 2.25rem;
+}
+
+.admin-stat-card__value {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--stat-color, var(--clr-primary));
+}
+
+.admin-stat-card__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+}
+
+/* Actions */
+.admin-actions {
+    padding: var(--space-xl);
+}
+
+.admin-section-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-lg);
+}
+
+.admin-action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+}
+
+.admin-action {
+    justify-content: center;
+    text-align: center;
+}
+
+/* Recent Table */
+.admin-recent {
+    padding: var(--space-xl);
+}
+
+.admin-recent__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-lg);
+}
+
+.admin-table-wrap {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: var(--space-md);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clr-text-muted);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.admin-table td {
+    padding: var(--space-md);
+    color: var(--clr-text);
+    border-bottom: 1px solid hsla(210, 50%, 70%, 0.05);
+    vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover td {
+    background: hsla(210, 50%, 70%, 0.03);
+}

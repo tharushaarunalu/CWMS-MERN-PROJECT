@@ -1,0 +1,144 @@
+/* ============================================================
+   Washing Plans Page
+   ============================================================ */
+.plans-page {
+    background: var(--clr-bg);
+}
+
+.plans-grid-wrap {
+    padding-bottom: var(--space-3xl);
+}
+
+.plans-big-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+    align-items: start;
+}
+
+.plans-big-card {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid var(--plan-color, var(--clr-primary));
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.plans-big-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px hsla(0, 0%, 0%, 0.5);
+}
+
+.plans-big-card--popular {
+    border-color: var(--clr-accent);
+    box-shadow: 0 0 40px hsla(268, 85%, 65%, 0.15), var(--glass-shadow);
+    transform: scale(1.03);
+}
+
+.plans-big-card--popular:hover {
+    transform: scale(1.03) translateY(-8px);
+}
+
+.plans-big-card__badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.875rem;
+    border-radius: 0 var(--radius-lg) 0 var(--radius-md);
+}
+
+.plans-big-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.plans-big-card__name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--plan-color, var(--clr-primary));
+}
+
+.plans-big-card__duration {
+    font-size: 0.8rem;
+    color: var(--clr-text-muted);
+}
+
+.plans-big-card__price {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.plans-big-card__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+    margin: var(--space-sm) 0;
+}
+
+.plans-big-card__features li {
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.plans-big-card__check {
+    color: var(--plan-color, var(--clr-primary));
+    font-weight: 800;
+}
+
+.plans-big-card__cta {
+    width: 100%;
+    justify-content: center;
+    margin-top: auto;
+}
+
+/* FAQ */
+.plans-faq {
+    padding: var(--space-2xl);
+}
+
+.plans-faq__title {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xl);
+}
+
+.plans-faq__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+}
+
+.plans-faq__item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.plans-faq__item p {
+    font-size: 0.875rem;
+    color: var(--clr-text-muted);
+    line-height: 1.65;
+}
+
+@media (max-width: 600px) {
+    .plans-big-card--popular {
+        transform: none;
+    }
+
+    .plans-big-card--popular:hover {
+        transform: translateY(-8px);
+    }
+}
